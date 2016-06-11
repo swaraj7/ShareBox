@@ -15,7 +15,7 @@ All API calls should be made to `http://www.shareboxes.herokuapp.com/`.
 {
     "snippet_name" : "unique name for the snippet",
     "snippet_privacy" : true, 
-    "snippet_expiry" : 5D,  
+    "snippet_expiry" : "5D",  
     "snippet_file" : {
       "file.txt" : {
         "contents": "String file contents"
@@ -51,7 +51,7 @@ Location: http://www.shareboxes.herokuapp.com/snippet/some-id-for-your-snippet
 
 **Output**
 ```
-Status : 302 Found
+Status : 200 Found
 Location: http://http://www.shareboxes.herokuapp.com/snippet/some-id-for-your-snippet
 {
     "snippet_file" : {
