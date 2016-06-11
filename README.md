@@ -1,23 +1,62 @@
-## for uploading file <br>
-  user has to give input in following format as dictionary with following format <br>
-  <br>
-    snippet_name: \<unique name for your snippet> <br>
-    snippet_format: \<extenssion of your code snippet eg- .py, .cpp, .php etc> <br>
-    snippet_privacy: \<choose either from "public" or "private"> <br>
-    snippet_expiry_date: \<enter the duration till link will be active><br>
-    snippet_text: \<provide you code snippet here><br>
-  
-## Output <br>
-Possible Good API responses <br>
-shareboxes.herokuapp.com/id/some-unique-id-for-your-snippet
-<br> <br>
-Possible Bad API responses <br>
-Bad API request, invalid snippet_name <br>
-Bad API request, maximum paste file size exceeded <br>
-Bad API request, invalid snippet_expire_date <br>
-Bad API request, invalid snippet_privacy <br>
-Bad API request, invalid snippet_format <br>
-<br> <br>
+A RESTful api to store and share your code-snippets among people.
 
 
+# API Documentation
 
+All API calls should be made to `http://www.shareboxes.herokuapp.com/`.
+
+## Create a Snippet Box
+
+`POST /snippet`
+
+**Input**
+
+```
+{
+    "snippet_name" : "unique name for the snippet",
+    "snippet_privacy" : true, 
+    "snippet_expiry" : 5D,  
+    "snippet_file" : {
+      "file.txt" : {
+        "contents": "String file contents"
+        }
+    }
+}
+```
+
+**Output**
+
+```
+Status: 201 OK
+Location: http://www.shareboxes.herokuapp.com/snippet/some-id-for-your-snippet
+
+{
+  "url": "http://http://www.shareboxes.herokuapp.com/snippet/some-id-for-your-snippet"
+  "snippet_id": "1234",
+  "snippet_privacy": true,
+  "snippet_expiry" : "5D",
+}
+```
+
+## To access the snippet from link
+
+`GET /snippet/id`
+
+**Input**
+``` 
+{
+    "snippet_id" = 1234
+}
+```
+
+**Output**
+```
+Status : 302 Found
+Location: http://http://www.shareboxes.herokuapp.com/snippet/some-id-for-your-snippet
+{
+    "snippet_file" : {
+      "file.txt" : {
+        "contents": "String file contents"
+        }
+    }
+}
