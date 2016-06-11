@@ -1,7 +1,7 @@
 ## for uploading file <br>
 <br>
   Simply send a valid POST request to URL shown below.
-  <br>  http://shareboxes.herokuapp.com/id/submit
+  <br>  http://www.shareboxes.herokuapp.com/id/submit
   user has to give input in following format as a dictionary object<br>
   <br>
     snippet_name: \<unique name for your snippet> <br>
