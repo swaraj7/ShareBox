@@ -1,5 +1,5 @@
 ## for uploading file <br>
-  user has to give input in following format as dictionary with following format <br>
+  user has to give input in following format as a dictionary object<br>
   <br>
     snippet_name: \<unique name for your snippet> <br>
     snippet_format: \<extenssion of your code snippet eg- .py, .cpp, .php etc> <br>
@@ -10,6 +10,7 @@
 ## Output <br>
 Possible Good API responses <br>
 shareboxes.herokuapp.com/id/some-unique-id-for-your-snippet
+<br> share the above url for sharing your code snippet
 <br> <br>
 Possible Bad API responses <br>
 Bad API request, invalid snippet_name <br>
