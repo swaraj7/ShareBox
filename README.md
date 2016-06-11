@@ -51,7 +51,7 @@ Location: http://www.shareboxes.herokuapp.com/snippet/some-id-for-your-snippet
 
 **Output**
 ```
-Status : 200 Found
+Status : 200 Ok
 Location: http://http://www.shareboxes.herokuapp.com/snippet/some-id-for-your-snippet
 {
     "snippet_file" : {
