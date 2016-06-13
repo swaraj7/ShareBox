@@ -16,11 +16,7 @@ All API calls should be made to `http://www.shareboxes.herokuapp.com/`.
     "snippet_name" : "unique name for the snippet",
     "snippet_privacy" : true, 
     "snippet_expiry" : 5D,  
-    "snippet_file" : {
-      "file.txt" : {
-        "contents": "String file contents"
-        }
-    }
+    "snippet_file" : "contents": "String file contents"
 }
 ```
 
@@ -32,9 +28,6 @@ Location: http://www.shareboxes.herokuapp.com/snippet/some-id-for-your-snippet
 
 {
   "url": "http://http://www.shareboxes.herokuapp.com/snippet/some-id-for-your-snippet"
-  "snippet_id": "1234",
-  "snippet_privacy": true,
-  "snippet_expiry" : "5D",
 }
 ```
 
@@ -42,21 +35,11 @@ Location: http://www.shareboxes.herokuapp.com/snippet/some-id-for-your-snippet
 
 `GET /snippet/id`
 
-**Input**
-``` 
-{
-    "snippet_id" = 1234
-}
-```
 
 **Output**
 ```
-Status : 302 Found
+Status : 200 ok
 Location: http://http://www.shareboxes.herokuapp.com/snippet/some-id-for-your-snippet
 {
-    "snippet_file" : {
-      "file.txt" : {
-        "contents": "String file contents"
-        }
-    }
+    "snippet_file" : "contents": "String file contents"
 }
