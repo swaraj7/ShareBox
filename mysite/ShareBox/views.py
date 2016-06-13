@@ -1,11 +1,12 @@
+import httplib
+import json
 from django.http import HttpResponse
 from ShareBox.models import Snippet
 from django.views.decorators.csrf import csrf_exempt
-import requests
-import httplib
-import json
+from django.views.decorators.http import require_http_methods
 
 
+@require_http_methods(["POST", "PUT", "DELETE"])
 @csrf_exempt
 def insert_db(request):
     if request.method == "POST":
@@ -20,19 +21,24 @@ def insert_db(request):
             snippet_file=snippet_data)
         new_snippet_box.save()
         output = {}
-        url = "http://www/shareboxes.herokuapp.com/snippet/id/" \
-            + str(new_snippet_box.id)
+        url = "http://www/shareboxes.herokuapp.com/snippet/" \
+            + str(new_snippet_box.id) + "/"
         output["url"] = url
-        print url
-    return HttpResponse(json.dumps(output))
+    return HttpResponse(json.dumps(output),
+                        content_type="application/json", status=201)
 
 
+@require_http_methods(["GET"])
 def query_db(request, input_id):
     if request.method == "GET":
         output = {}
         try:
-            output["snippet_file"] =Snippet.objects.get(id=input_id).snippet_file
+            output["snippet_file"] = Snippet.objects.get(
+                id=input_id).snippet_file
+            return HttpResponse(json.dumps(output),
+                                content_type="application/json", status=200)
         except:
             output["snippet_file"] = "no snippet in database with give id , \
                 please check the url or the id provided at the end of url."
-        return HttpResponse(json.dumps(output))
+        return HttpResponse(json.dumps(output),
+                            content_type="application/json", status=404)
