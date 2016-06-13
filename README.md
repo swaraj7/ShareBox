@@ -39,13 +39,6 @@ Location: http://www.shareboxes.herokuapp.com/snippet/some-id-for-your-snippet
 
 `GET /snippet/id`
 
-**Input**
-``` 
-{
-    "snippet_id" = 1234
-}
-```
-
 **Output**
 ```
 Status : 200 Ok
