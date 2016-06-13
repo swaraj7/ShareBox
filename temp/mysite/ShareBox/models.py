@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Snippet(models.Model):
+class snippet(models.Model):
     snippet_name = models.CharField(max_length=20)
     snippet_privacy = models.BooleanField(default=False)
     snippet_expiry = models.CharField(max_length=3)
